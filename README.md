@@ -26,6 +26,8 @@
 
 ## Environment
 * Python: 3.10.1
+* urllib3: 1.26.4
+* beautifulsoup4 4.9.3
 
 ## Contact
 👤 **Larry**
