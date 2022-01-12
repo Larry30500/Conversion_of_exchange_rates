@@ -1,17 +1,40 @@
-# Python_urlib_request_bs4_WebCrawler_CurrencyConversion
 
-Table of Contents
+<h1 align="center">
+  <br>
+  Python_urlib_request_bs4_WebCrawler_CurrencyConversion
+</h1>
+
+<p><font size="3">
+  This is a web crawler project for currency conversion of Taiwan bank.
+  <br><br> 
+  <strong><em>Take a look at Taiwan bank website here:</em></strong> https://rate.bot.com.tw/xrt?Lang=zh-TW
+</p>
+
+  
+## Table of Contents 
+- [Project Walk-Through](#Project-Walk-Through)
+- [Environment](#Environment)
+- [Contact](#Contact)
+- [Acknowledgments](#Acknowledgments)
+- [License](#License)
+
+  
+## Project Walk-Through
+* 123
+  
+  
+## Environment
+* Python: 3.5.2
 
 
-###FlowChart
+  
+## Contact
+Larry30500 - [@larry30500](https://twitter.com/larry30500) - larry30500@gmail.com
 
-```flow
-st=>start: Login
-op=>operation: Login operation
-cond=>condition: Successful Yes or No?
-e=>end: To admin
 
-st->op->cond
-cond(yes)->e
-cond(no)->op
-```
+## Acknowledgements
+Hat tip to everyone helped me to learn the techniques used in building this project.
+
+  
+## License
+Distributed under the MIT License. See `LICENSE` for more information.
