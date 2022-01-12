@@ -34,12 +34,17 @@
 
 
 ## Contact
-Larry30500 - [@larry30500](https://twitter.com/larry30500) - larry30500@gmail.com
+👤 **Larry**
+  * Github: https://github.com/Larry30500
+  * Email: larry30500@gmail.com
+  * Twitter: [@larry30500](https://twitter.com/larry30500)
 
 
 ## Acknowledgements
-Hat tip to everyone helped me to learn the techniques used in building this project.
+`*Hat tip to everyone helped me to learn the techniques used in building this project.*`
+`*Give a ⭐️ if you like this project!*`
 
 
 ## License
 Distributed under the MIT License. See `LICENSE` for more information.
+
