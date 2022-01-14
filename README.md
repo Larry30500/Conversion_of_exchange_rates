@@ -2,7 +2,6 @@
 <h1 align="center">
   <br>
   [專題作品]網路爬蟲-兌換外匯小程式
-  Python_urlib_request_bs4_WebCrawler_CurrencyConversion
 </h1>
 
 <p><font size="3">
