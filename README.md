@@ -6,21 +6,23 @@
 
 ## 目錄
 * [作品簡介](#作品簡介)
-* [作品演練](#作品演練)
+* [作品內容](#作品內容)
 * [設備與環境](#設備與環境)
-* [聯繫方式](#聯繫方式)
+* [聯絡資料](#聯絡資料)
 * [致謝](#致謝)
 * [權限](#權限)
 
 
 ## 作品簡介
-1. 使用網路爬蟲技術 (urllib.request/bs4)，自動抓取目前臺灣銀行的外匯資料。
-2. 使用者輸入欲兌換的 (1)臺幣金額 與 (2)貨幣種類，即可計算出兌換後的該貨幣金額。
+### 1. 使用網路爬蟲技術 (urllib.request/bs4)，自動抓取目前臺灣銀行的外匯資料。
+### 2. 使用者輸入欲兌換的 (1)臺幣金額 與 (2)貨幣種類，即可計算出兌換後的該貨幣金額。
 
-<strong><em>外匯相關資料，請參考臺灣銀行網站：</em></strong>  https://rate.bot.com.tw/xrt?Lang=zh-TW
+  ![conversion_images](images/conversion.gif)
+
+<strong><em>若您有興趣想更了解此程式，請參考下方的聯絡方式，進一步聯絡作者，謝謝參閱。</em></strong>
 
 
-## 作品演練
+## 作品內容
 ### 1. 使用網路爬蟲技術 (urllib.request/bs4)，自動抓取目前臺灣銀行的外匯資料。
 * 需先檢查是否已安裝 urllib.request 和 bs4 套件
   ```python
@@ -29,6 +31,7 @@
   ```
   
 * 於臺灣銀行外匯網頁，檢視網頁的程式碼，找到需要擷取的類別資料，放入`find_all()`函式內
+* 外匯相關資料，請參考臺灣銀行網站：https://rate.bot.com.tw/xrt?Lang=zh-TW
   ```python
   html_page = urllib.request.urlopen(url)
   sp = BeautifulSoup(html_page, 'html.parser')
@@ -105,10 +108,6 @@
     counter += 1
   ```
 
-![conversion_images](images/conversion.gif)
-
-* 若您想要更了解此程式運作，請參考下方聯絡方式，進一步聯絡作者，謝謝參閱。
-
 
 ## 設備與環境
 ### 電子設備/作業系統
@@ -119,10 +118,10 @@
 ### 開發軟體/套件版本
 * Python: 3.10.1
 * urllib3: 1.26.4
-* beautifulsoup4 4.9.3
+* beautifulsoup4: 4.9.3
 
 
-## 聯繫方式
+## 聯絡資料
 👤 **Larry**
   * Github: https://github.com/Larry30500
   * Email: larry30500@gmail.com
@@ -136,4 +135,6 @@
 
 ## 權限
 目前設定為 MIT 權限。請參閱 `LICENSE`，了解更多相關 MIT 權限的規定。
+
+<br><br>[返回目錄](#目錄)
 
