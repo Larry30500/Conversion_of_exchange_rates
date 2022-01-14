@@ -22,34 +22,36 @@
 
 ## 作品演練
 ### 1. 使用網路爬蟲技術 (urllib.request/bs4)，自動抓取目前臺灣銀行的外匯資料。
+* 需先檢查是否已安裝 urllib.request 和 bs4 套件
   ```python
-  # 需先檢查是否已安裝 urllib.request 和 bs4 套件
   import urllib.request
   from bs4 import BeautifulSoup
-
+  ```
+  
+* 於臺灣銀行外匯網頁，檢視網頁的程式碼，找到需要擷取的類別資料，放入`find_all()`函式內
+  ```python
   html_page = urllib.request.urlopen(url)
-  
-  # 藉由爬蟲獲取臺灣銀行的外匯資料
   sp = BeautifulSoup(html_page, 'html.parser')
-  row_with_currency_names = sp.find_all('div', 'print_show')
-  cash_rates = sp.find_all('td', 'rate-content-cash')
+  row_with_currency_names = sp.find_all(貨幣)
+  cash_rates = sp.find_all(匯率)
+  ```
   
-  # 從爬蟲獲取的外匯資料中，擷取需要的貨幣名稱和匯率
+* 從爬蟲獲取的外匯資料中，擷取需要的貨幣名稱和匯率
+  ```python
   for index in range(len(row_with_currency_names)):
     for key in currency_rates:
       if key in row_with_currency_names[index].text:
         currency_rates[key] = float(cash_rates[index * 2 + 1].string)
-```
+  ```
+  
 ### 2. 使用者輸入欲兌換的 (1)臺幣金額 與 (2)貨幣種類，即可計算出兌換後的該貨幣金額。
-
-* 使用 while 迴圈達到循環輸入，並於迴圈內部，設立 3 個節點，過程中如果使用者輸入錯誤，提示輸入錯誤，請再輸入一次；如果輸入正確，則前往下個節點，直到計算出結果，並回到第一個節點。
-
-* 第 1 個節點：檢查使用者輸入的新臺幣金額
-```python
+* 使用 while 迴圈達到循環輸入，並於迴圈內部，設立 3 個節點，目的為：使用過程中如果使用者輸入錯誤，提示輸入錯誤，請再輸入一次；如果輸入正確，則前往下個節點，直到計算出結果，並回到第一個節點。
+* 第 1 個節點：檢查使用者輸入欲兌換的新臺幣金額
+  ```python
   while True:
     # 設立第 1 個節點
     if check_point == 1:
-      input_NTD = input('提示使用者輸入台幣')
+      input_NTD = input('提示使用者輸入臺幣')
 
       if counter > 1:
         # 判斷：若使用者輸入 Q 或 q 字元，則退出程式
@@ -70,10 +72,10 @@
       
       # 若以上皆輸入正確，則前往下個節點
       check_point = 2
-```
+  ```
 
 * 第 2 個節點：檢查使用者輸入欲兌換的貨幣
-```python
+  ```python
   elif check_point == 2:
     # 使用者輸入貨幣名稱
     input_currency = input()
@@ -91,21 +93,21 @@
       
     # 若以上皆輸入正確，則前往下個節點
     check_point = 3
-```
+  ```
 
-* 第 3 個節點：計算可兌換的外匯金額
-```python
+* 第 3 個節點：計算出兌換後的外幣金額
+  ```python
   elif check_point == 3:
     exchanged_amount = input_NTD / currency_rates[currency_names[input_currency - 1]]
     print('顯示結果')
     
     check_point = 1
     counter += 1
-```
+  ```
 
-![Test_images](images/test.jpg)
+![conversion_images](images/conversion.gif)
 
-* 如果您想更了解此程式，請參考下方聯絡方式，進一步聯絡作者。
+* 若您想要更了解此程式運作，請參考下方聯絡方式，進一步聯絡作者，謝謝參閱。
 
 
 ## 設備與環境
