@@ -6,30 +6,28 @@
 
 ## 目錄
 * [摘要](#摘要)
-* [重點說明](#重點說明)
+* [重點程式碼說明](#重點說明)
 * [系統環境](#系統環境)
 * [聯絡資料](#聯絡資料)
 * [致謝](#致謝)
 * [權限](#權限)
 
 
-## 摘要 (本作品含 網路爬蟲技術 (urllib.request/bs4)，可自動擷取目前臺灣銀行的即時外匯資料。)
-### 1. 使用網路爬蟲技術 (urllib.request/bs4)，自動抓取目前臺灣銀行的外匯資料。
-### 2. 使用者輸入欲兌換的 (1)臺幣金額 與 (2)貨幣種類，即可計算出兌換後的該貨幣金額。
+## 摘要
+### 1. 本作品內含網路爬蟲相關技術 (urllib.request/bs4)，可自動擷取目前臺灣銀行之即時的外匯資料。
+### 2. 主要功能為：當使用者輸入欲兌換的 (1)臺幣金額 與 (2)貨幣種類，即可計算出兌換後的該貨幣金額。
 
-  ![conversion_images](images/conversion.gif)
+  ![conversion01](images/conversion01.gif)
 
 <strong><em>若您有興趣想更了解此程式，請參考下方的聯絡方式，進一步聯絡作者，謝謝參閱。</em></strong>
 
 
-## 重點說明
-### 1. 使用網路爬蟲技術 (urllib.request/bs4)，自動抓取目前臺灣銀行的外匯資料。
+## 重點程式碼說明
+### 1. 本作品內含網路爬蟲相關技術 (urllib.request/bs4)，可自動擷取目前臺灣銀行之即時的外匯資料。
   
 * 於臺灣銀行外匯網頁，檢視網頁的程式碼，找到需要擷取的類別資料，放入`find_all()`函式內
 * 外匯相關資料，請參考臺灣銀行網站：https://rate.bot.com.tw/xrt?Lang=zh-TW
   ```python
-  html_page = urllib.request.urlopen(url)
-  sp = BeautifulSoup(html_page, 'html.parser')
   row_with_currency_names = sp.find_all(貨幣)
   cash_rates = sp.find_all(匯率)
   ```
@@ -38,70 +36,51 @@
   ```python
   for index in range(len(row_with_currency_names)):
     for key in currency_rates:
-      if key in row_with_currency_names[index].text:
-        currency_rates[key] = float(cash_rates[index * 2 + 1].string)
+      ⋮
   ```
   
-### 2. 使用者輸入欲兌換的 (1)臺幣金額 與 (2)貨幣種類，即可計算出兌換後的該貨幣金額。
+### 2. 主要功能為：當使用者輸入欲兌換的 (1)臺幣金額 與 (2)貨幣種類，即可計算出兌換後的該貨幣金額。
 #### 使用 while 迴圈達到循環輸入，並於迴圈內部，設立 3 個節點，目的：使用過程中如果使用者輸入錯誤，提示輸入錯誤，請再輸入一次；如果輸入正確，則前往下個節點，直到計算出結果，並回到第一個節點。
-* 第 1 個節點：檢查使用者輸入欲兌換的新臺幣金額
   ```python
+  check_point = 1
+  
   while True:
-    # 設立第 1 個節點
     if check_point == 1:
-      input_NTD = input('提示使用者輸入臺幣')
-
-      if counter > 1:
-        # 判斷：若使用者輸入 Q 或 q 字元，則退出程式
-        if input_NTD.lower() == 'q':
-          print('提示使用者即將退出程式')
-          break
-
-      # 使用者輸入僅限為整數或浮點數
-      try: input_NTD = float(input_NTD) 
-      except: 
-        print('提示使用者輸入錯誤') 
-        continue
-
-      # 判斷：若使用者輸入的金額小於零，則顯示輸入錯誤
-      if (0 > input_NTD):
-        print('提示使用者輸入錯誤')
-        continue
-      
-      # 若以上皆輸入正確，則前往下個節點
+      ⋮
+      # 若使用者輸入正確，則前往第 2 個節點
       check_point = 2
-  ```
-
-* 第 2 個節點：檢查使用者輸入欲兌換的貨幣
-  ```python
-  elif check_point == 2:
-    # 使用者輸入貨幣名稱
-    input_currency = input()
-
-    # 使用者輸入僅限為整數
-    try: input_currency = int(input_currency)
-    except:
-      print('提示使用者輸入錯誤')
-      continue
-
-    # 判斷：若使用者輸入的貨幣名稱不在設定範圍內，則顯示輸入錯誤
-    if not (1 <= input_currency <= len(currency_names)):
-      print('提示使用者輸入錯誤')
-      continue
       
-    # 若以上皆輸入正確，則前往下個節點
-    check_point = 3
+    elif check_point == 2:
+      ⋮
+      # 若使用者輸入正確，則前往第 3 個節點
+      check_point = 3
+      
+    elif check_point == 3:
+      ⋮
+      print('顯示結果')
+      check_point = 1
+      counter += 1
   ```
-
-* 第 3 個節點：計算出兌換後的外幣金額
-  ```python
-  elif check_point == 3:
-    exchanged_amount = input_NTD / currency_rates[currency_names[input_currency - 1]]
-    print('顯示結果')
+  * 第 1 個節點：檢查使用者輸入欲兌換的新臺幣金額
+    1. 使用者輸入僅限為整數或浮點數，否則顯示輸入錯誤
+    2. 使用者輸入的金額小於零，則顯示輸入錯誤
+    3. 使用者輸入 Q 或者 q，則退出程式
+    4. 輸入正確，則前往第 2 個節點
     
-    check_point = 1
-    counter += 1
-  ```
+    ![conversion_point01](images/conversion_point01.gif)
+
+  * 第 2 個節點：檢查使用者輸入欲兌換的貨幣
+    1. 使用者輸入僅限為整數 1 ~ 5 之間，否則顯示輸入錯誤
+    2. 使用者輸入若非整數，則顯示輸入錯誤
+    3. 輸入正確，則前往第 3 個節點
+    
+    ![conversion_point02](images/conversion_point02.gif)
+  
+  * 第 3 個節點：計算出兌換後的外幣金額
+    1. 計算新臺幣兌換外幣結果
+    2. 輸出結果
+
+    ![conversion_point03](images/conversion_point03.gif)
 
 
 ## 系統環境
@@ -110,7 +89,7 @@
 
 ### 相關套件
 * Python 核心：3.10
-* Beautiful soup：4.9
+* Beautiful Soup：4.9
 
 
 ## 聯絡資料
@@ -119,7 +98,7 @@
 
 
 ## 致謝
-*非常感謝指導老師提供靈感和方向。3-5行*
+*非常感謝指導老師 (Francesco Ke) 提供程式設計的靈感和方向，並細心指導學生編寫程式時，所需注重的細節。*
 
 *如果您喜歡此專案，記得點擊⭐️支持作者。*
 
