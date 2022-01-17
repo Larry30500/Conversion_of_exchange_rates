@@ -64,21 +64,21 @@
     3. 使用者輸入 Q 或者 q，則退出程式
     4. 輸入正確，則前往第 2 個節點
     
-    ![conversion01](images/conversion01.gif)
+    ![conversion_point01](images/conversion_point01.gif)
 
   * 第 2 個節點：檢查使用者輸入欲兌換的貨幣
     1. 使用者輸入僅限為整數 1 ~ 5 之間，否則顯示輸入錯誤
     2. 使用者輸入若非整數，則顯示輸入錯誤
     3. 輸入正確，則前往第 3 個節點
     
-    ![conversion02](images/conversion02.gif)
+    ![conversion_point02](images/conversion_point02.gif)
   
   * 第 3 個節點：計算出兌換後的外幣金額
     1. 計算新臺幣兌換外幣結果
     2. 輸出結果
     3. 輸出結果後，返回第一個節點
 
-    ![conversion03](images/conversion03.gif)
+    ![conversion_point03](images/conversion_point03.gif)
 
 
 ## 系統環境
