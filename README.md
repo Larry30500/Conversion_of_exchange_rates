@@ -22,7 +22,7 @@
 
 ## 重點程式碼說明
 ### 1. 本作品內含網路爬蟲相關技術 (urllib.request/bs4)，可自動擷取目前臺灣銀行之即時的外匯資料。
-* 於臺灣銀行外匯網頁，檢視網頁的程式碼，找到需要擷取的類別資料，放入`find_all()`函式內
+* 於臺灣銀行外匯網頁，檢視網頁程式碼，找到需要擷取的類別資料，放入`find_all()`函式內
 * 外匯相關資料，請參考臺灣銀行網站：https://rate.bot.com.tw/xrt?Lang=zh-TW
   ```python
   row_with_currency_names = sp.find_all(貨幣)
@@ -32,7 +32,7 @@
 * 從爬蟲獲取的外匯資料中，擷取需要的貨幣名稱和匯率
   ```python
   for index in range(len(row_with_currency_names)):
-    for key in currency_rates:
+    for key in currency_rates
       ⋮
   ```
   
