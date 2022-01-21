@@ -26,40 +26,41 @@
 
 ## 重點程式碼說明
 ### 1. 本作品內含網路爬蟲的相關技術，可自動擷取目前臺灣銀行之即時的外匯資料。
-* 於臺灣銀行的外匯資訊相關網頁(https://rate.bot.com.tw/xrt?Lang=zh-TW)，讀取其網頁資料，並找到需要擷取的特定部分。  
+* 於臺灣銀行的外匯資訊相關網頁(https://rate.bot.com.tw/xrt?Lang=zh-TW)，讀取其網頁資料，並找到需要擷取的特定部分。
 * 從爬蟲獲取的外匯資料中，擷取需要的貨幣名稱和匯率。
-  
+
 ### 2. 主要功能為：當使用者輸入 (1)欲被兌換的臺幣金額 (2)兌換後的貨幣種類 之後，本程式則可自動計算出其兌換後的貨幣金額。
-  ```python
-  check_point = 1
-  
-  # 在 while 迴圈當中，達到循環輸入的效果，並且設立設立 3 個檢測事項，以確認被輸入的資料是否存在錯誤，而需要重新輸入。  
-  # 目的：若使用者輸入錯誤，提示使用者輸入錯誤，請再輸入一次；輸入正確，則前往下個檢測事項，最後計算並顯示結果，再回到第一個節點。
-  while True:
-    if check_point == 1:
-      # 使用者輸入新臺幣的金額。
-      input_NTD = input('請輸入新臺幣的金額：')
-      ⋮
-      
-      # 若使用者輸入正確，則前往第 2 個檢測事項。
-      check_point = 2
-      
-    elif check_point == 2:
-      # 使用者輸入貨幣名稱
-      input_currency = input('貨幣代碼：(1)美金 (2)日圓 (3)韓元 (4)人民幣 (5)澳幣\n\n請輸入您要兌換的貨幣代碼：')
-      ⋮
-      
-      # 若使用者輸入正確，則前往第 3 個檢測事項。
-      check_point = 3
-      
-    elif check_point == 3:
-      ⋮
-      
-      print(f'總共兌換了：{exchanged_amount:.4f}')
-      
-      check_point = 1
-      counter += 1
-  ```
+```python
+# 在 while 迴圈當中，達到循環輸入的效果，並且設立設立 3 個檢測事項，以確認被輸入的資料是否存在錯誤，而需要重新輸入。  
+# 目的：若使用者輸入錯誤，提示使用者輸入錯誤，請再輸入一次；輸入正確，則前往下個檢測事項，最後計算並顯示結果，再回到第一個節點。
+
+check_point = 1
+
+while True:
+  if check_point == 1:
+    # 使用者輸入新臺幣的金額。
+    input_NTD = input('請輸入新臺幣的金額：')
+    ⋮
+
+    # 若使用者輸入正確，則前往第 2 個檢測事項。
+    check_point = 2
+
+  elif check_point == 2:
+    # 使用者輸入貨幣名稱
+    input_currency = input('貨幣代碼：(1)美金 (2)日圓 (3)韓元 (4)人民幣 (5)澳幣\n\n請輸入您要兌換的貨幣代碼：')
+    ⋮
+
+    # 若使用者輸入正確，則前往第 3 個檢測事項。
+    check_point = 3
+
+  elif check_point == 3:
+    ⋮
+
+    print(f'總共兌換了：{exchanged_amount:.4f}')
+
+    check_point = 1
+    counter += 1
+```
 
 &nbsp;
 
@@ -69,16 +70,16 @@
 3. 使用者輸入 Q 或者 q，則退出程式。
 * 輸入正確，則前往第 2 個檢測事項。
 
-  ![conversion_point01](images/conversion_point01.gif)
+![conversion_point01](images/conversion_point01.gif)
 
 &nbsp;
 
 ### 4. 第 2 個檢測事項：檢查使用者輸入欲兌換的貨幣。
-#### 1. 使用者輸入僅限為整數 1 ~ 5 之間，否則顯示輸入錯誤。
-#### 2. 使用者輸入若非整數，則顯示輸入錯誤。
+1. 使用者輸入僅限為整數 1 ~ 5 之間，否則顯示輸入錯誤。
+2. 使用者輸入若非整數，則顯示輸入錯誤。
 3. 輸入正確，則前往第 3 個檢測事項。
 
-  ![conversion_point02](images/conversion_point02.gif)
+![conversion_point02](images/conversion_point02.gif)
 
 &nbsp;
   
@@ -86,7 +87,7 @@
 1. 計算並輸出新臺幣兌換外幣的結果。
 2. 輸出結果後，自動返回第 1 個檢測事項，讓使用者可以再重新操作。
 
-  ![conversion_point03](images/conversion_point03.gif)
+![conversion_point03](images/conversion_point03.gif)
 
 &nbsp;
 
